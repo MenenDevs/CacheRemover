@@ -1,0 +1,2 @@
+
+-change uncompressed jquery file for the compressed file (later when finishing up)
