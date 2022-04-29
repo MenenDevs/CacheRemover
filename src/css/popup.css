@@ -1,0 +1,21 @@
+table,
+th,
+td {
+  border-collapse: collapse;
+  text-align: left;
+}
+
+table {
+  width: 100%;
+}
+
+tr > th:last-child,
+tr > td:last-child {
+  width: 1px;
+  white-space: nowrap;
+}
+
+table input {
+  width: 20px;
+  height: 20px;
+}
