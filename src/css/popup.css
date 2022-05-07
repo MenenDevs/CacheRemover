@@ -1,3 +1,10 @@
+.extensionTitle {
+  margin: 1rem 0;
+  width: 100%;
+  font-size: x-large;
+  text-align: center;
+}
+
 table,
 th,
 td {
@@ -7,6 +14,7 @@ td {
 
 table {
   width: 100%;
+  margin: 1rem 0;
 }
 
 tr > th:last-child,
@@ -18,4 +26,16 @@ tr > td:last-child {
 table input {
   width: 20px;
   height: 20px;
+}
+
+tr.all > td,
+tr.domain > td {
+  padding-top: 0.5rem;
+  font-weight: bold;
+  font-size: medium;
+}
+
+.domainName,
+.name {
+  white-space: nowrap;
 }
