@@ -137,12 +137,12 @@ $(document).ready(function () {
         let cookiesDiv = $(".cookies");
 
         // create row for "All cookies"
-        let tr = $("<tr/>", { class: "all", type: "all" });
+        let tr = $("<tr/>", { class: "text all", type: "all" });
         let td0 = $("<td/>");
         let buttonCollapse = $("<button/>", { class: "collapsable open" });
         buttonCollapse.appendTo(td0);
         td0.appendTo(tr);
-        $("<td/>", { html: "All cookies", colspan: 2 }).appendTo(tr);
+        $("<td/>", { class: "text", html: "All cookies", colspan: 3 }).appendTo(tr);
         let td2 = $("<td/>");
         let buttonDelete = $("<input/>", { type: "image", src: "../images/delete.svg" });
         buttonDelete.appendTo(td2);
@@ -167,7 +167,7 @@ $(document).ready(function () {
           let buttonCollapse = $("<button/>", { class: "collapsable" });
           buttonCollapse.appendTo(td0);
           td0.appendTo(tr);
-          $("<td/>", { class: "domainName", html: index }).appendTo(tr);
+          $("<td/>", { class: "text", html: index, colspan: 2 }).appendTo(tr);
           let td2 = $("<td/>");
           let buttonDelete = $("<input/>", { type: "image", src: "../images/delete.svg" });
           buttonDelete.appendTo(td2);
@@ -188,7 +188,10 @@ $(document).ready(function () {
             let tr = $("<tr/>", { class: "cookie hidden", type: "cookie", domain: cookie.domain, path: cookie.path, name: cookie.name });
             $("<td/>").appendTo(tr); //first column is for button on "All cookies" row
             $("<td/>").appendTo(tr); //second column is for button on domain rows
-            $("<td/>", { class: "name", html: cookie.name }).appendTo(tr);
+            let td = $("<td/>");
+            $("<img/>", { class: "cookieImg", src: "../images/cookie.svg", alt: cookie.name }).prependTo(td);
+            td.appendTo(tr);
+            $("<td/>", { class: "text", html: cookie.name }).appendTo(tr);
             let td2 = $("<td/>");
             let buttonDelete = $("<input/>", { type: "image", src: "../images/delete.svg" });
             buttonDelete.appendTo(td2);
