@@ -3,7 +3,7 @@ var url;
 function removeRowAll(trNode) {
   let trNext = trNode.next();
   while (trNext.length > 0) {
-    if (trNext.attr("class") != "domain") {
+    if (trNext.attr("type") != "domain") {
       removeOneCookie(trNext);
     }
 
@@ -17,7 +17,7 @@ function removeRowAll(trNode) {
 function removeRowDomain(trNode) {
   let trPrev = trNode.prev();
   let trNext = trNode.next();
-  while (trNext.length > 0 && trNext.attr("class") != "domain") {
+  while (trNext.length > 0 && trNext.attr("type") != "domain") {
     removeOneCookie(trNext);
     trNext.remove();
     trNext = trNode.next();
@@ -26,7 +26,7 @@ function removeRowDomain(trNode) {
   trNode.remove();
   if (trNext.length == 0) {
     // no more cookies underneath
-    if (trPrev.attr("class") == "all") {
+    if (trPrev.attr("type") == "all") {
       // if no more cookies at all
       trPrev.remove(); // remove "All cookies" row
     }
@@ -39,11 +39,11 @@ function removeRowCookie(trNode) {
   let trPrev = trNode.prev();
   let trNext = trNode.next();
   trNode.remove();
-  haveNextDomain = trNext.length != 0 && trNext.attr("class") == "domain";
-  if (trPrev.length > 0 && trPrev.attr("class") == "domain" && (trNext.length == 0 || haveNextDomain)) {
+  haveNextDomain = trNext.length != 0 && trNext.attr("type") == "domain";
+  if (trPrev.length > 0 && trPrev.attr("type") == "domain" && (trNext.length == 0 || haveNextDomain)) {
     let trPrevPrev = trPrev.prev();
     trPrev.remove(); // remove domain row
-    if (trPrevPrev.length > 0 && trPrevPrev.attr("class") == "all" && !haveNextDomain) {
+    if (trPrevPrev.length > 0 && trPrevPrev.attr("type") == "all" && !haveNextDomain) {
       trPrevPrev.remove(); // remove "All cookies" row
     }
   }
@@ -85,7 +85,7 @@ $(document).ready(function () {
 
         let cookiesDiv = $(".cookies");
 
-        let tr = $("<tr/>", { class: "all" });
+        let tr = $("<tr/>", { class: "all", type: "all" });
         $("<td/>", { html: "All cookies" }).appendTo(tr);
         let td2 = $("<td/>");
         let buttonDelete = $("<input/>", { type: "image", src: "../images/delete.svg" });
@@ -103,7 +103,7 @@ $(document).ready(function () {
           const cookiesVec = cookiesByDomain[index];
 
           // create row for this domain
-          let tr = $("<tr/>", { class: "domain", name: index });
+          let tr = $("<tr/>", { class: "domain", type: "domain", name: index });
           $("<td/>", { class: "domainName", html: index }).appendTo(tr);
           let td2 = $("<td/>");
           let buttonDelete = $("<input/>", { type: "image", src: "../images/delete.svg" });
@@ -120,7 +120,7 @@ $(document).ready(function () {
           // create row for each cookie from this domain
           for (let i = 0; i < cookiesVec.length; i++) {
             const cookie = cookiesVec[i];
-            let tr = $("<tr/>", { class: "cookie", domain: cookie.domain, path: cookie.path, name: cookie.name });
+            let tr = $("<tr/>", { class: "cookie", type: "cookie", domain: cookie.domain, path: cookie.path, name: cookie.name });
             $("<td/>", { class: "name", html: cookie.name }).appendTo(tr);
             let td2 = $("<td/>");
             let buttonDelete = $("<input/>", { type: "image", src: "../images/delete.svg" });
