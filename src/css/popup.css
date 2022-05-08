@@ -10,6 +10,7 @@ th,
 td {
   border-collapse: collapse;
   text-align: left;
+  vertical-align: middle;
 }
 
 table {
@@ -17,8 +18,8 @@ table {
   margin: 1rem 0;
 }
 
-tr > th:last-child,
-tr > td:last-child {
+tr > th,
+tr > td {
   width: 1px;
   white-space: nowrap;
 }
@@ -30,7 +31,6 @@ table input {
 
 tr.all > td,
 tr.domain > td {
-  padding-top: 0.5rem;
   font-weight: bold;
   font-size: medium;
 }
@@ -38,4 +38,27 @@ tr.domain > td {
 .domainName,
 .name {
   white-space: nowrap;
+}
+
+.collapsable {
+  background: url(../images/triangle-fill.svg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 8px;
+  height: 8px;
+  border: 0;
+  transform: rotate(90deg); /* closed by default */
+}
+
+.collapsable.open {
+  transform: rotate(180deg);
+}
+
+.hidden {
+  display: none;
+}
+
+button:hover,
+input:hover {
+  filter: invert(36%) sepia(92%) saturate(2275%) hue-rotate(204deg) brightness(99%) contrast(99%); /* #267cfc */
 }
