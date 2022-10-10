@@ -1,6 +1,6 @@
 {
-  "name": "Cookie Monster",
-  "description": "Removes cache of any page.",
+  "name": "Cookie Devourer",
+  "description": "Chrome extension that displays all cookies stored by the current active website and allows to remove them.",
   "version": "0.1",
   "manifest_version": 3,
   "background": {
